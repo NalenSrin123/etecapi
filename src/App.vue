@@ -2,9 +2,10 @@
 import { computed, reactive, ref } from 'vue';
 
 const storageKey = 'teaching-api-dashboard';
-const productionApiBaseUrl = 'http://etecapi.atwebpages.com/api';
-const defaultApiBaseUrl = import.meta.env.DEV ? '/api' : productionApiBaseUrl;
+const productionApiBaseUrl = '/api';
+const defaultApiBaseUrl = '/api';
 const legacyApiBaseUrls = [
+  'http://etecapi.atwebpages.com/api',
   'https://etecapi.byethost7.com/api',
   'http://etecapi.byethost7.com/api',
 ];

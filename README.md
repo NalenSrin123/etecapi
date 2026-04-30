@@ -4,9 +4,9 @@ This folder contains a Vue 3 + Vite dashboard for the PHP Teaching API.
 
 ## Default API
 
-The dashboard now defaults to this hosted API:
+The dashboard now defaults to the same-origin proxy path:
 
-`http://etecapi.atwebpages.com/api`
+`/api`
 
 You can still change it in the dashboard if needed.
 
@@ -35,10 +35,8 @@ npm install
 npm run build
 ```
 
-Then deploy the built files from `dashboard/dist/` to your hosting account.
+Then deploy the project to Vercel. The frontend is served as static Vite output, and Vercel Functions proxy `/api/*` to `http://etecapi.atwebpages.com/api/*`.
 
 ## Important
 
-If you run the Vue dashboard on a different domain or port from the PHP API, your PHP API must allow CORS. If you deploy the built dashboard on the same domain as the API, the current setup is much simpler.
-
-For local development with `npm run dev`, Vite now proxies `/api` to `http://etecapi.atwebpages.com`, so browser CORS errors are avoided during development. Production deployments still need proper CORS headers unless the frontend and API are served from the same origin.
+For local development with `npm run dev`, Vite proxies `/api` to `http://etecapi.atwebpages.com`. On Vercel, the `api/[...path].js` function handles the same proxy in production, which avoids mixed-content and browser CORS issues because the browser only talks to your Vercel origin over HTTPS.
