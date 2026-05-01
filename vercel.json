@@ -4,10 +4,6 @@
   "outputDirectory": "dist",
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/[...path].js"
-    },
-    {
       "handle": "filesystem"
     },
     {
